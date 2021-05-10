@@ -1,115 +1,117 @@
-<div class="r-item">
-	<div class="container-fluid">
-		<div class="r-btn text-right">
-			<button class="btn btn-primary mt-1 mb-1" id="new_item" data-toggle="modal" data-target="#itemModel">New Item</button>
+<div class="main" id="main">	
+	<div class="r-item">
+		<div class="container-fluid">
+			<div class="r-btn text-right">
+				<button class="btn btn-primary mt-1 mb-1" id="new_item" data-toggle="modal" data-target="#itemModel">New Item</button>
+			</div>
+			<table class="table table-striped table-dark table-bordered table-view">
+				<thead>
+					<tr>
+						<td>No</td>
+						<td>Item</td>
+						<td>Description</td>
+						<td>Qty</td>
+						<td>Price</td>
+						<td>Total</td>
+						<td colspan="2" class="text-center">Options</td>
+					</tr>
+				</thead>
+				<tbody id="tbItem">
+					
+				</tbody>
+			</table>
 		</div>
-		<table class="table table-striped table-dark table-bordered">
-			<thead>
-				<tr>
-					<td>No</td>
-					<td>Item</td>
-					<td>Description</td>
-					<td>Qty</td>
-					<td>Price</td>
-					<td>Total</td>
-					<td colspan="2" class="text-center">Options</td>
-				</tr>
-			</thead>
-			<tbody id="tbItem">
-				
-			</tbody>
-		</table>
-	</div>
-	<div class="modal fade" role="dialog" id="itemModel">
-		<div class="modal-dialog">
-			<div class="modal-content kh-Ang form-product">
-				<div class="modal-header">
-					<h4 class="modal-title">
-						Add Item To Quote
-					</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="item">
-						<div class="form-group">
-							<label>Items</label>
-							<select class="custom-select" name="item_name" id="item_name">
-								<option value="0">Select</option>
-								<?php foreach($pro as $row): ?>
-									<option value="<?php echo $row->pro_id?>"><?php echo $row->pro_name ?></option>
-								<?php endforeach; ?>
-							</select>
-							<div class="text-warning" id="item_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Price</label>
-							<input type="text" class="form-control" name="item_price" id="item_price" disabled>
-							<div class="text-warning" id="price_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Qty</label>
-							<input type="text" name="item_qty" id="item_qty" class="form-control" value="1">
-							<div class="text-warning" id="qty_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" rows="4" name="item_des" id="item_des"></textarea>
-						</div>
-						<input type="hidden" name="item_quote" id="item_quote" value="<?php echo $url ?>">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button class="btn-modal" data-dismiss="modal">Cancel</button>
-					<button class="btn-modal" id="add_item">Add</button>
+		<div class="modal fade" role="dialog" id="itemModel">
+			<div class="modal-dialog">
+				<div class="modal-content kh-Ang form-product">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Add Item To Quote
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="item">
+							<div class="form-group">
+								<label>Items</label>
+								<select class="custom-select" name="item_name" id="item_name">
+									<option value="0">Select</option>
+									<?php foreach($pro as $row): ?>
+										<option value="<?php echo $row->pro_id?>"><?php echo $row->pro_name ?></option>
+									<?php endforeach; ?>
+								</select>
+								<div class="text-warning" id="item_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Price</label>
+								<input type="text" class="form-control" name="item_price" id="item_price" disabled>
+								<div class="text-warning" id="price_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Qty</label>
+								<input type="text" name="item_qty" id="item_qty" class="form-control" value="1">
+								<div class="text-warning" id="qty_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Description</label>
+								<textarea class="form-control" rows="4" name="item_des" id="item_des"></textarea>
+							</div>
+							<input type="hidden" name="item_quote" id="item_quote" value="<?php echo $url ?>">
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn-modal" data-dismiss="modal">Cancel</button>
+						<button class="btn-modal" id="add_item">Add</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="modal fade" role="dialog" id="edititemModel">
-		<div class="modal-dialog">
-			<div class="modal-content kh-Ang form-product">
-				<div class="modal-header">
-					<h4 class="modal-title">
-						Update Item
-					</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="edititem">
-						<div class="form-group">
-							<label>Items</label>
-							<select class="custom-select" name="edititem_name" id="edititem_name" disabled>
-								<option value="0">Select</option>
-								<?php foreach($pro as $row): ?>
-									<option value="<?php echo $row->pro_id?>"><?php echo $row->pro_name ?></option>
-								<?php endforeach; ?>
-							</select>
-							<div class="text-warning" id="item_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Price</label>
-							<input type="text" class="form-control" name="edititem_price" id="edititem_price" disabled>
-							<div class="text-warning" id="price_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Qty</label>
-							<input type="text" name="edititem_qty" id="edititem_qty" class="form-control">
-							<div class="text-warning" id="qty_error"></div>
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" rows="4" name="edititem_des" id="edititem_des"></textarea>
-						</div>
-						<input type="hidden" name="item_quote" id="edititem_id">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button class="btn-modal" data-dismiss="modal">Cancel</button>
-					<button class="btn-modal" id="update_item">Update</button>
+		<div class="modal fade" role="dialog" id="edititemModel">
+			<div class="modal-dialog">
+				<div class="modal-content kh-Ang form-product">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							Update Item
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="edititem">
+							<div class="form-group">
+								<label>Items</label>
+								<select class="custom-select" name="edititem_name" id="edititem_name" disabled>
+									<option value="0">Select</option>
+									<?php foreach($pro as $row): ?>
+										<option value="<?php echo $row->pro_id?>"><?php echo $row->pro_name ?></option>
+									<?php endforeach; ?>
+								</select>
+								<div class="text-warning" id="item_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Price</label>
+								<input type="text" class="form-control" name="edititem_price" id="edititem_price" disabled>
+								<div class="text-warning" id="price_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Qty</label>
+								<input type="text" name="edititem_qty" id="edititem_qty" class="form-control">
+								<div class="text-warning" id="qty_error"></div>
+							</div>
+							<div class="form-group">
+								<label>Description</label>
+								<textarea class="form-control" rows="4" name="edititem_des" id="edititem_des"></textarea>
+							</div>
+							<input type="hidden" name="item_quote" id="edititem_id">
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn-modal" data-dismiss="modal">Cancel</button>
+						<button class="btn-modal" id="update_item">Update</button>
+					</div>
 				</div>
 			</div>
 		</div>

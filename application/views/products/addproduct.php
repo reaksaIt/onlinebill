@@ -1,176 +1,177 @@
-<div class="container-fluid">
-	<div class="menu bg-primary p-0 m-0">
-		<ul> 
-			<li class="menu-bg" id="bg_pro">
-				<div  id="linkpro">Product</div>
-			</li>
-			<li id="bg_cat">
-				<div  id="linkcat">Category</div>
-			</li>
-		</ul>
-	</div>
-	
-	<div class="mg-btn p-1 text-right">
-		<button class="btn-modal btn-primary mr-1" data-toggle="modal" data-target="#proModal">New Product</button>
-		<button class="btn-modal btn-primary" data-toggle="modal" data-target="#catModal">New Category</button>
-	</div>
-	<div id="viewpro" class="menu-d-block">
-		<table class="table table-striped table-dark table-bordered">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Items</th>
-					<th>Price</th>
-					<th>Description</th>
-					<th>Category</th>
-					<th colspan="2">Options</th>
-				</tr>
-			</thead>
-			<tbody id="myproduct">
-				
-			</tbody>
-		</table>
-		<div class="text-center" id="pro_founder"></div>
-	</div>
-	<div id="viewcat" class="menu-d-none">
-		<table class="table table-striped table-dark table-bordered">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Categoru</th>
-					<th>Description</th>
-					<th colspan="2">Options</th>
-				</tr>
-			</thead>
-			<tbody id="tbCategory">
-				
-			</tbody>
-		</table>
-		<div class="text-center" id="founder"></div>
-	</div>
-	<div class="pro-control">
-		<div class="modal fade" id="proModal" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content kh-Ang form-product">
-					<div class="modal-header">
-						<h4 class="modal-title">New Product</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+<div class="main" id="main">
+	<div class="container-fluid">
+		<div class="menu bg-dark p-0 m-0">
+			<ul> 
+				<li class="menu-bg" id="bg_pro">
+					<div  id="linkpro">Product</div>
+				</li>
+				<li id="bg_cat">
+					<div  id="linkcat">Category</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="mg-btn p-1 text-right">
+			<button class="btn-modal btn-primary mr-1" data-toggle="modal" data-target="#proModal">New Product</button>
+			<button class="btn-modal btn-primary" data-toggle="modal" data-target="#catModal">New Category</button>
+		</div>
+		<div id="viewpro" class="menu-d-block">
+			<table class="table table-striped table-dark table-bordered table-view">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Items</th>
+						<th>Price</th>
+						<th>Description</th>
+						<th>Category</th>
+						<th colspan="2">Options</th>
+					</tr>
+				</thead>
+				<tbody id="myproduct">
+					
+				</tbody>
+			</table>
+			<div class="text-center" id="pro_founder"></div>
+		</div>
+		<div id="viewcat" class="menu-d-none">
+			<table class="table table-striped table-dark table-bordered table-view">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Categoru</th>
+						<th>Description</th>
+						<th colspan="2">Options</th>
+					</tr>
+				</thead>
+				<tbody id="tbCategory">
+					
+				</tbody>
+			</table>
+			<div class="text-center" id="founder"></div>
+		</div>
+		<div class="pro-control">
+			<div class="modal fade" id="proModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content kh-Ang form-product">
+						<div class="modal-header">
+							<h4 class="modal-title">New Product</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="product">
+								<div class="form-group">
+									<label>Product Name*</label>
+									<input type="text" name="pro_name" id="pro_name" class="form-control" placeholder="Product Name" autocomplete="off">
+									<div class="text-warning" id="pro_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Price*</label>
+									<input type="text" name="pro_price" id="pro_price" placeholder="Price" class="form-control" autocomplete="off">
+									<div class="text-warning" id="price_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Category*</label>
+									<select name="pro_cat" id="pro_cat" class="custom-select">
+										<option value="0">Select</option>
+										<?php foreach ($cat as $row):?>
+											<option value="<?php echo $row->cat_id; ?>"><?php echo $row->cat_name; ?></option>
+										<?php endforeach; ?>
+									</select>
+									<div class="text-warning" id="pc_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Description</label>
+									<textarea rows="4" class="form-control" name="pro_des" placeholder="Description"></textarea>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn-modal" data-dismiss="modal">Cancel</button>
+							<button class="btn-modal" id="add_pro">Add</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<form id="product">
-							<div class="form-group">
-								<label>Product Name*</label>
-								<input type="text" name="pro_name" id="pro_name" class="form-control" placeholder="Product Name" autocomplete="off">
-								<div class="text-warning" id="pro_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Price*</label>
-								<input type="text" name="pro_price" id="pro_price" placeholder="Price" class="form-control" autocomplete="off">
-								<div class="text-warning" id="price_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Category*</label>
-								<select name="pro_cat" id="pro_cat" class="custom-select">
-									<option value="0">Select</option>
-									<?php foreach ($cat as $row):?>
-										<option value="<?php echo $row->cat_id; ?>"><?php echo $row->cat_name; ?></option>
-									<?php endforeach; ?>
-								</select>
-								<div class="text-warning" id="pc_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Description</label>
-								<textarea rows="4" class="form-control" name="pro_des" placeholder="Description"></textarea>
-							</div>
-						</form>
+				</div>
+			</div>
+			<div class="modal fade" id="editModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content kh-Ang form-product">
+						<div class="modal-header">
+							<h4 class="modal-title">Update Product</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="updatepro">
+								<div class="form-group">
+									<label>Product Name*</label>
+									<input type="text" name="edit_name" id="edit_name" class="form-control" placeholder="Product Name" autocomplete="off">
+									<div class="text-warning" id="pro_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Price*</label>
+									<input type="text" name="edit_price" id="edit_price" placeholder="Price" class="form-control" autocomplete="off">
+									<div class="text-warning" id="price_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Category*</label>
+									<select name="edit_cat" id="edit_cat" class="custom-select">
+										<option value="0">Select</option>
+										<?php foreach ($cat as $row):?>
+											<option value="<?php echo $row->cat_id; ?>"><?php echo $row->cat_name; ?></option>
+										<?php endforeach; ?>
+									</select>
+									<div class="text-warning" id="pc_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Description</label>
+									<textarea rows="4" class="form-control" name="edit_des" id="edit_des" placeholder="Description"></textarea>
+								</div>
+								<input type="hidden" name="edit_id" id="edit_id">
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn-modal" data-dismiss="modal">Cancel</button>
+							<button class="btn-modal" id="update_pro">Update</button>
+						</div>
 					</div>
-					<div class="modal-footer">
-						<button class="btn-modal" data-dismiss="modal">Cancel</button>
-						<button class="btn-modal" id="add_pro">Add</button>
+				</div>
+			</div>
+			<div class="modal fade" role="dialog" id="catModal">
+				<div class="modal-dialog">
+					<div class="modal-content form-product kh-Ang">
+						<div class="modal-header">
+							<h4 class="modal-title">
+								New Category
+							</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="category">
+								<div class="form-group">
+									<label>Cateogry</label>
+									<input type="text" name="cat_name" id="cat_name" class="form-control" autocomplete="off" placeholder="Category">
+									<div class="text-warning" id="cat_error"></div>
+								</div>
+								<div class="form-group">
+									<label>Description</label>
+									<textarea rows="4" class="form-control" placeholder="Description" id="cat_des" name="cat_des"></textarea>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn-modal" data-dismiss="modal">Cancel</button>
+							<button class="btn-modal" id="add_cat">Add</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="editModal" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content kh-Ang form-product">
-					<div class="modal-header">
-						<h4 class="modal-title">Update Product</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="updatepro">
-							<div class="form-group">
-								<label>Product Name*</label>
-								<input type="text" name="edit_name" id="edit_name" class="form-control" placeholder="Product Name" autocomplete="off">
-								<div class="text-warning" id="pro_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Price*</label>
-								<input type="text" name="edit_price" id="edit_price" placeholder="Price" class="form-control" autocomplete="off">
-								<div class="text-warning" id="price_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Category*</label>
-								<select name="edit_cat" id="edit_cat" class="custom-select">
-									<option value="0">Select</option>
-									<?php foreach ($cat as $row):?>
-										<option value="<?php echo $row->cat_id; ?>"><?php echo $row->cat_name; ?></option>
-									<?php endforeach; ?>
-								</select>
-								<div class="text-warning" id="pc_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Description</label>
-								<textarea rows="4" class="form-control" name="edit_des" id="edit_des" placeholder="Description"></textarea>
-							</div>
-							<input type="hidden" name="edit_id" id="edit_id">
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button class="btn-modal" data-dismiss="modal">Cancel</button>
-						<button class="btn-modal" id="update_pro">Update</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" role="dialog" id="catModal">
-			<div class="modal-dialog">
-				<div class="modal-content form-product kh-Ang">
-					<div class="modal-header">
-						<h4 class="modal-title">
-							New Category
-						</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="category">
-							<div class="form-group">
-								<label>Cateogry</label>
-								<input type="text" name="cat_name" id="cat_name" class="form-control" autocomplete="off" placeholder="Category">
-								<div class="text-warning" id="cat_error"></div>
-							</div>
-							<div class="form-group">
-								<label>Description</label>
-								<textarea rows="4" class="form-control" placeholder="Description" id="cat_des" name="cat_des"></textarea>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button class="btn-modal" data-dismiss="modal">Cancel</button>
-						<button class="btn-modal" id="add_cat">Add</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+	</div>	
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){

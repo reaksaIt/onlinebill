@@ -43,7 +43,6 @@
 			};
 			var email = $.trim($("input[name='email']").val());
 			var password = $.trim($('#password').val());
-			
 			if(isEmail(email)!=''){
 				$('#e_error').text('');
 			}

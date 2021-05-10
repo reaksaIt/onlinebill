@@ -1,0 +1,18 @@
+$(document).ready(function(){
+	$('#brand_logo').hide();
+	$('#open').hide();
+	$('#open').click(function(){
+		$('#mySidenav').css({'width':'150px'});
+		$('.main').css({'margin-left':'150px'});
+		$(this).hide();
+		$('#close').show();
+		$('#brand_logo').hide();
+	})
+	$('#close').click(function(){
+		$('#mySidenav').css({'width':'0px'});
+		$('.main').css({'margin-left':'0px'});
+		$(this).hide();
+		$('#open').show();
+		$('#brand_logo').show();
+	})
+})

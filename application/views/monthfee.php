@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="sidebar">
 	<div class="modal fade" role="dialog" id="calModal">
 		<div class="modal-dialog">
 			<div class="modal-content kh-Ang form-product">

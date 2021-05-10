@@ -37,10 +37,18 @@ class queryModel extends CI_Model
 
 	//Query Quote join tree table
 	public function query_quote_info(){
-		$this->db->select('quote_id,quote_status,quote_num,quote_cre_date,quote_amount,cus_name,us_fname,us_lname');
+		$this->db->select('quote_id,quote_status,quote_num,quote_cre_date,quote_ex_date,quote_amount,cus_name,us_fname,us_lname');
 		$this->db->from('tb_quote');
 		$this->db->join('tb_user','tb_quote.quote_by=tb_user.us_id');
 		$this->db->join('tb_customer','tb_quote.quote_cus=tb_customer.cus_id');
+		return $this->db->get();
+	}
+	public function query_quote_info_pdf($id){
+		$this->db->select('quote_amount,quote_num,quote_cre_date,quote_ex_date,quote_amount,cus_name,cus_address,cus_phone,cus_email,us_fname,us_lname,us_address,us_phone');
+		$this->db->from('tb_quote');
+		$this->db->join('tb_user','tb_quote.quote_by=tb_user.us_id');
+		$this->db->join('tb_customer','tb_quote.quote_cus=tb_customer.cus_id');
+		$this->db->where('quote_id',$id);
 		return $this->db->get();
 	}
 
@@ -60,7 +68,7 @@ class queryModel extends CI_Model
 
 	//Query Invoice
 	public function query_invoice_info(){
-		$this->db->select('iv_num,iv_status,iv_date,iv_id,iv_paid,iv_balance,iv_note,us_fname,us_lname,quote_amount,quote_cus,cus_name');
+		$this->db->select('iv_num,iv_status,iv_date,iv_ex_date,iv_id,iv_paid,iv_balance,iv_note,us_fname,us_lname,quote_amount,quote_cus,cus_name');
 		$this->db->from('tb_invoice');
 		$this->db->join('tb_user','tb_invoice.iv_by = tb_user.us_id');
 		$this->db->join('tb_quote','tb_invoice.iv_quote=tb_quote.quote_id');

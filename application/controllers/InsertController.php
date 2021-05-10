@@ -169,6 +169,7 @@ class InsertController extends CI_Controller
 
 	public function addInvoice(){
 		$cre_date = date('d/m/Y');
+		$ex_date = date('d/m/Y',strtotime('+10 days'));
 		$email = $this->session->userdata('email');
 		$sql = $this->queryModel->query_one_cond('tb_user','us_id','us_email',$email);
 		if($sql->num_rows()>0){
@@ -187,6 +188,7 @@ class InsertController extends CI_Controller
 					'iv_quote'=>$this->input->post('iv_quote'),
 					'iv_status'=>$this->input->post('iv_status'),
 					'iv_date'=>$cre_date,
+					'iv_ex_date'=>$ex_date,
 					'iv_by'=>$iv_by,
 					'iv_paid'=>0,
 					'iv_balance'=>0,

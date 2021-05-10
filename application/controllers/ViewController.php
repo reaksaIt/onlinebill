@@ -35,7 +35,7 @@ class ViewController extends CI_Controller {
 	public function index()
 	{
 		
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');	
 		$this->load->view('dashboard/home');
 		$this->load->view('dashboard/footer');
 	}
@@ -57,14 +57,14 @@ class ViewController extends CI_Controller {
 		$sql = $this->querymodel->defaultQuery('tb_category','cat_id,cat_name');
 		$data['cat'] = $sql->result();
 		
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('products/addproduct',$data);
 		$this->load->view('dashboard/footer');
 	}
 
 	//View customer page
 	public function viewcustomer(){
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('customer/customer');
 		$this->load->view('dashboard/footer');
 	}
@@ -73,21 +73,28 @@ class ViewController extends CI_Controller {
 	public function viewquote(){
 		$data = $this->querymodel->defaultQuery('tb_customer','cus_id,cus_name');
 		$sql['cus']=$data->result();
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('quote/quote',$sql);
 		$this->load->view('dashboard/footer');
 	}
 
 	//Veiw Invoice Page
 	public function viewinvoice(){
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('invoice/invoice');
+		$this->load->view('dashboard/footer');
+	}
+
+	//View Payment page
+	public function viewpayment(){
+		$this->load->view('dashboard/sidebarmenu');
+		$this->load->view('invoice/payment');
 		$this->load->view('dashboard/footer');
 	}
 
 	//Page Month Fee
 	public function viewmonthfee(){
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('monthfee');
 		$this->load->view('dashboard/footer');
 	}
@@ -96,8 +103,13 @@ class ViewController extends CI_Controller {
 		$sql['url'] = $this->uri->segment(3);
 		$data = $this->querymodel->defaultQuery('tb_products','pro_id,pro_name');
 		$sql['pro']=$data->result();
-		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('quote/items',$sql);
+		$this->load->view('dashboard/footer');
+	}
+
+	public function testsidebar(){
+		$this->load->view('dashboard/sidebarmenu');
 		$this->load->view('dashboard/footer');
 	}
 

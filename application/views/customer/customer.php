@@ -1,110 +1,113 @@
-<div class="container-fluid">
-	<div class="m-customer">
-		<div class="mg-cus-btn mt-1 mb-1 text-right">
-			<button class="btn-modal btn-primary" id="newcustomer" data-toggle="modal" data-target="#customerModal">New Customer</button>
+<div class="main" id="main">
+	<div class="container-fluid">
+		<div class="m-customer">
+			<div class="mg-cus-btn mt-1 mb-1 text-right">
+				<button class="btn-modal btn-primary" id="newcustomer" data-toggle="modal" data-target="#customerModal">New Customer</button>
+			</div>
+			<table class="table table-striped table-dark table-bordered table-view">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Customer</th>
+						<th>Contact</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Date</th>
+						<th>By</th>
+						<th colspan="2">Options</th>
+					</tr>
+				</thead>
+				<tbody id="tbcustomer">
+					
+				</tbody>
+			</table>
 		</div>
-		<table class="table table-striped table-dark table-bordered">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Customer</th>
-					<th>Contact</th>
-					<th>Email</th>
-					<th>Address</th>
-					<th>Date</th>
-					<th>By</th>
-					<th colspan="2">Options</th>
-				</tr>
-			</thead>
-			<tbody id="tbcustomer">
-				
-			</tbody>
-		</table>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" role="dialog" id="customerModal">
+		<div class="modal-dialog">
+			<div class="modal-content kh-Ang form-product">
+				<div class="modal-header">
+					<h4 class="modal-title">New Customer</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="customer">
+						<div class="form-group">
+							<label>Customer Name*</label>
+							<input type="text" name="cus_name" id="cus_name" class="form-control" placeholder="Customer Name" autocomplete="off">
+							<div class="text-warning" id="cus_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Phone*</label>
+							<input type="text" name="cus_phone" id="cus_phone" class="form-control" placeholder="Phone" autocomplete="off">
+							<div class="text-warning" id="phone_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Email*</label>
+							<input type="email" name="cus_email" id="cus_email" class="form-control" placeholder="Email" autocomplete="off">
+							<div class="text-warning" id="email_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Address*</label>
+							<textarea rows="4" class="form-control" name="cus_add" id="cus_add" placeholder="Address"></textarea>
+							<div class="text-warning" id="add_error"></div>
+						</div>
+						<input type="hidden" name="cus_on" value="<?php echo date('d/m/Y') ?>">
+						<!-- <input type="text" name="cus_by"> -->
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn-modal" data-dismiss="modal">Cancel</button>
+					<button class="btn-modal" id="add_cus">Add</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" role="dialog" id="editcusModal">
+		<div class="modal-dialog">
+			<div class="modal-content kh-Ang form-product">
+				<div class="modal-header">
+					<h4 class="modal-title">Edit Customer</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="editcustomer">
+						<div class="form-group">
+							<label>Customer Name*</label>
+							<input type="text" name="edit_name" id="edit_name" class="form-control" placeholder="Customer Name" autocomplete="off">
+							<div class="text-warning" id="cus_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Phone*</label>
+							<input type="text" name="edit_phone" id="edit_phone" class="form-control" placeholder="Phone" autocomplete="off">
+							<div class="text-warning" id="phone_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Email*</label>
+							<input type="email" name="edit_email" id="edit_email" class="form-control" placeholder="Email" autocomplete="off">
+							<div class="text-warning" id="email_error"></div>
+						</div>
+						<div class="form-group">
+							<label>Address*</label>
+							<textarea rows="4" class="form-control" name="edit_add" id="edit_add" placeholder="Address"></textarea>
+							<div class="text-warning" id="add_error"></div>
+						</div>
+						<input type="hidden" name="edit_id" id="edit_id">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn-modal" data-dismiss="modal">Cancel</button>
+					<button class="btn-modal" id="update_cus">Update</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<!-- Modal -->
-<div class="modal fade" role="dialog" id="customerModal">
-	<div class="modal-dialog">
-		<div class="modal-content kh-Ang form-product">
-			<div class="modal-header">
-				<h4 class="modal-title">New Customer</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form id="customer">
-					<div class="form-group">
-						<label>Customer Name*</label>
-						<input type="text" name="cus_name" id="cus_name" class="form-control" placeholder="Customer Name" autocomplete="off">
-						<div class="text-warning" id="cus_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Phone*</label>
-						<input type="text" name="cus_phone" id="cus_phone" class="form-control" placeholder="Phone" autocomplete="off">
-						<div class="text-warning" id="phone_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Email*</label>
-						<input type="email" name="cus_email" id="cus_email" class="form-control" placeholder="Email" autocomplete="off">
-						<div class="text-warning" id="email_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Address*</label>
-						<textarea rows="4" class="form-control" name="cus_add" id="cus_add" placeholder="Address"></textarea>
-						<div class="text-warning" id="add_error"></div>
-					</div>
-					<input type="hidden" name="cus_on" value="<?php echo date('d/m/Y') ?>">
-					<!-- <input type="text" name="cus_by"> -->
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button class="btn-modal" data-dismiss="modal">Cancel</button>
-				<button class="btn-modal" id="add_cus">Add</button>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="modal fade" role="dialog" id="editcusModal">
-	<div class="modal-dialog">
-		<div class="modal-content kh-Ang form-product">
-			<div class="modal-header">
-				<h4 class="modal-title">Edit Customer</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form id="editcustomer">
-					<div class="form-group">
-						<label>Customer Name*</label>
-						<input type="text" name="edit_name" id="edit_name" class="form-control" placeholder="Customer Name" autocomplete="off">
-						<div class="text-warning" id="cus_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Phone*</label>
-						<input type="text" name="edit_phone" id="edit_phone" class="form-control" placeholder="Phone" autocomplete="off">
-						<div class="text-warning" id="phone_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Email*</label>
-						<input type="email" name="edit_email" id="edit_email" class="form-control" placeholder="Email" autocomplete="off">
-						<div class="text-warning" id="email_error"></div>
-					</div>
-					<div class="form-group">
-						<label>Address*</label>
-						<textarea rows="4" class="form-control" name="edit_add" id="edit_add" placeholder="Address"></textarea>
-						<div class="text-warning" id="add_error"></div>
-					</div>
-					<input type="hidden" name="edit_id" id="edit_id">
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button class="btn-modal" data-dismiss="modal">Cancel</button>
-				<button class="btn-modal" id="update_cus">Update</button>
-			</div>
-		</div>
-	</div>
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){

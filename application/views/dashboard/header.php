@@ -56,6 +56,9 @@
 			    	<li class="nav-item">
 						<a class="nav-link text-light" href="<?php echo base_url() ?>index.php/viewcontroller/viewmonthfee">OT</a>
 			    	</li>
+			    	<li class="nav-item">
+						<a class="nav-link text-light" href="<?php echo base_url() ?>index.php/viewcontroller/testsidebar">Test Sidebar</a>
+			    	</li>
 			    </ul>
 			    <div class="my-2 my-lg-0">
 			    	<?php if($this->session->userdata("email")==""){ ?>
@@ -75,3 +78,12 @@
 			</div>
 		</div>
 	</nav>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(function(){
+				var activeurl = window.location;
+				$('a[href="'+activeurl+'"]').addClass('me-work');
+
+			});
+		});
+	</script>
